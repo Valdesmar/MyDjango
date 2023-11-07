@@ -20,20 +20,20 @@
                         <h2 class="cards__titulo">Navegue pela galeria</h2>
                         <ul class="cards__lista">
                             {% if cards %}
-                            {% for photo in cards %}
+                            {% for photos in cards %}
                             <li class="card">
-                                <a href="{% url 'imagem' photo.id %}">
-                                {% if photo.foto == "" or photo.foto == null %}
-                                    <img class="card__imagem" src="{% static '/assets/imagens/galeria/not-found.png'%}" alt="foto">
+                                <a href="{% url 'imagem' photos.id %}">
+                                {% if photos.foto == "" or photos.foto == null %}
+                                    <img class="card__imagem" src="{% static '/assets/imagens/galeria/not-found.png'%}" alt="photo">
                                 {% else %}
-                                    <img class="card__imagem" src="{{ photo.foto.url }}" alt="foto">
+                                    <img class="card__imagem" src="{{ photos.foto.url }}" alt="photo">
                                 {% endif %}
                                 </a>
-                                <span class="card__tag">Estrelas</span>
+                                <span class="card__tag">{{photos.categoria}}</span>
                                 <div class="card__info">
-                                    <p class="card__titulo">{{photo.nome}}</p>
+                                    <p class="card__titulo">{{photos.nome}}</p>
                                     <div class="card__texto">
-                                        <p class="card__descricao">{{photo.legenda}}</p>
+                                        <p class="card__descricao">{{photos.legenda}}</p>
                                         <span>
                                             <img src="{% static '/assets/ícones/1x/favorite_outline.png' %}" alt="ícone de coração">
                                         </span>
